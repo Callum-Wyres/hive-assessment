@@ -22,7 +22,7 @@ read cli_response
 if [[ $cli_response = "install" ]] ; then
   python setup.py
 else
-  echo "Continuing to with assessment criteria"
+  echo -e "${TXT_YEL}Continuing to with assessment criteria${TXT_NC}"
 fi
 
 ################ Login to Azure
@@ -32,11 +32,11 @@ az login
 
 ################# Initialise terraform
 
-echo "${TXT_YEL}Intializing terraform....${TXT_NC}"
+echo -e "${TXT_YEL}Intializing terraform....${TXT_NC}"
 cd terraform
 terraform init
 
-echo "${TXT_YEL}Creating Azure resource group and Azure Container Registry....${TXT_NC}"
+echo -e "${TXT_YEL}Creating Azure resource group and Azure Container Registry....${TXT_NC}"
 terraform apply -target azurerm_resource_group.devopsassessment -target azurerm_container_registry.acr --auto-approve
 ################ Build docker image
 cd ..
@@ -46,7 +46,7 @@ az acr build --registry devopsassessment --image devops-assessment .
 
 ############### Deploy ACR Image to App service
 cd terraform
-echo "${TXT_YEL}Creating app service and deploying image....${TXT_NC}"
+echo -e "${TXT_YEL}Creating app service and deploying image....${TXT_NC}"
 terraform apply -target azurerm_app_service_plan.assessment -target azurerm_app_service.assessment --auto-approve
 terraform apply -target azurerm_monitor_autoscale_setting.assessment -target azurerm_application_insights.appinsight --auto-approve
 
@@ -56,14 +56,13 @@ echo -e "${TXT_GRN}Terraform deployment has successfully succeeded. ${TXT_NC}"
 
 echo -e ${TXT_BLU}"A terraform destroy is due to prevent the application running and using further free credit. Please type yes followed by enter. Alternatively, please type no followed by enter to keep the infrastructure"${TXT_NC}
 read destroy_response
+
 if [[ $destroy_response = "yes" ]] ; then
-  echo "Destroying resources...."
+  echo -e "${TXT_YEL}Destroying resources....${TXT_NC}"
   terraform destroy --auto-approve
   echo -e "${TXT_GRN}Terraform destroy has successfully completed. ${TXT_NC}"
 else
   echo -e "${TXT_GRN}Terraform destroy was cancelled by the end user.${TXT_NC}"
 fi
-
-
 
 echo -e "${TXT_GRN}Terraform destroy has successfully completed. ${TXT_NC}"
