@@ -1,27 +1,33 @@
 #!/bin/bash
+######## Output options
+
+TXT_RED='\033[0;31m'
+TXT_GRN='\033[0;32m'
+TXT_BLU='\033[0;34m'
+TXT_YEL='\033[1;33m'
+TXT_NC='\033[0m'
 
 ################ Clone of Project
 
-echo "Clone of github project"
+echo -e "${TXT_YEL}Clone of terraform deployment project${TXT_NC}"
 
-git clone git@github.com:Callum-Wyres/devops-assessment.git
+#git clone git@github.com:Callum-Wyres/devops-assessment.git
 
-cd devops-assessment
+#cd devops-assessment
 
 ###############Install of AZ CLI
 
-echo "Do you have the azure CLI installed on your machine - If not please type yes followed by enter to install the cli onto your machine. If you have the cli installed please press enter to continue."
-read cli_response
-
-if [ [$cli_response = "yes"] ] ; then
-  python setup.py
-else
-  echo "Continuing to with assessment criteria"
-fi
+#echo ${TXT_BLU}"Do you have the azure CLI installed on your machine - If not please type yes followed by enter to install the cli onto your machine. If you have the cli installed please press enter to continue."${TXT_NC}
+#read cli_response
+#if [[ $cli_response = "install" ]] ; then
+#  python setup.py
+#else
+#  echo "Continuing to with assessment criteria"
+#fi
 
 ################ Login to Azure
 
-az login
+#az login
 
 ################# Initialise terraform
 

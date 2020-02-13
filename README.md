@@ -1,16 +1,16 @@
 # Hive Devops Assessment
 # Pre-requisites
- - Azure account create with a active subscription
- - Terraform installed
- - Git module installed
+ - Macbook / Linux Device
+ - Azure account created with an active subscription
+ - Terraform module installed on macbook
+ - Git module installed on macbook
 
 # Instructions
 
 Please clone this repository down to your local mac device and follow the below:
  - cd into the repo on your machine
- - perform chmod 744 assessment.sh to allow the file to run as an executable
  - The details below listed in overview explain input required for the deployment.
- 
+
 # Overview
 This Repo is used with the intentions to deploy the below into a Azure subscription:
 
@@ -24,7 +24,7 @@ The Script performs the below actions:
 
 - Clones the repo holding the source code
 - Prompts for input in regards to whether to install the Azure CLI
-    - If the install is required please type install and hit the enter otherwise hit enter to continue with the deployment
+    - If the install is required please type install and hit enter, otherwise hit enter to continue with the deployment
         - Performs a install of the azure cli into /usr/local/opt/azure-cli and configures path to allow the az commands used later in this to run from any location.
 - Performs a login to Azure
 - Initilises Terraform
