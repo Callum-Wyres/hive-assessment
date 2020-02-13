@@ -40,7 +40,12 @@ az acr build --registry devopsassessment --image devops-assessment .
 ############### Deploy ACR Image to App service
 cd terraform
 terraform apply -target azurerm_app_service_plan.assessment -target azurerm_app_service.assessment --auto-approve
-terraform apply -target azurerm_monitor_autoscale_setting.assessment --auto-approve
-terraform apply -target azurerm_application_insights.appinsight --auto-approve
+terraform apply -target azurerm_monitor_autoscale_setting.assessment -target azurerm_application_insights.appinsight --auto-approve
 
 curl https://cwdevops-appservice.azurewebsites.net/healthcheck
+
+echo "Terraform deployment has successfully succeeded. "
+
+read -p "Please press enter to perform a terraform destroy to prevent the application running and using further free credit."
+
+terraform destroy --auto-approve
