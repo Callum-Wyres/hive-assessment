@@ -3,6 +3,14 @@
  - Azure account create with a active subscription
  - Terraform installed
  - Git module installed
+
+# Instructions
+
+Please clone this repository down to your local mac device and follow the below:
+ - cd into the repo on your machine
+ - perform chmod 744 assessment.sh to allow the file to run as an executable
+ - The details below listed in overview explain input required for the deployment.
+ 
 # Overview
 This Repo is used with the intentions to deploy the below into a Azure subscription:
 
@@ -26,3 +34,4 @@ The Script performs the below actions:
 -  Creates the remaining components
 - Performs a curl command to confirm the site is up and running
 - Requests for input to perform a terraform destory
+
