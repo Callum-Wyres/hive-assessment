@@ -9,35 +9,35 @@ TXT_NC='\033[0m'
 
 ################ Clone of Project
 
-#echo -e "${TXT_YEL}Clone of terraform deployment project${TXT_NC}"
+echo -e "${TXT_YEL}Clone of terraform deployment project${TXT_NC}"
 
-#git clone git@github.com:Callum-Wyres/devops-assessment.git
+git clone git@github.com:Callum-Wyres/devops-assessment.git
 
-#cd devops-assessment
+cd devops-assessment
 
 ###############Install of AZ CLI
 
-#echo -e ${TXT_BLU}"Do you have the azure CLI installed on your machine - If not please type yes followed by enter to install the cli onto your machine. If you have the cli installed please press enter to continue."${TXT_NC}
-#read cli_response
-#if [[ $cli_response = "install" ]] ; then
-#  python setup.py
-#else
-#  echo "Continuing to with assessment criteria"
-#fi
+echo -e ${TXT_BLU}"Do you have the azure CLI installed on your machine - If not please type yes followed by enter to install the cli onto your machine. If you have the cli installed please press enter to continue."${TXT_NC}
+read cli_response
+if [[ $cli_response = "install" ]] ; then
+  python setup.py
+else
+  echo "Continuing to with assessment criteria"
+fi
 
 ################ Login to Azure
 
-#echo -e "${TXT_YEL} Logging into your Azure subscription ${TXT_NC}}"
-#az login
+echo -e "${TXT_YEL} Logging into your Azure subscription ${TXT_NC}}"
+az login
 
 ################# Initialise terraform
 
-#echo "${TXT_YEL}Intializing terraform....${TXT_NC}"
-#cd terraform
-#terraform init
+echo "${TXT_YEL}Intializing terraform....${TXT_NC}"
+cd terraform
+terraform init
 
-#echo "${TXT_YEL}Creating Azure resource group and Azure Container Registry....${TXT_NC}"
-#terraform apply -target azurerm_resource_group.devopsassessment -target azurerm_container_registry.acr --auto-approve
+echo "${TXT_YEL}Creating Azure resource group and Azure Container Registry....${TXT_NC}"
+terraform apply -target azurerm_resource_group.devopsassessment -target azurerm_container_registry.acr --auto-approve
 ################ Build docker image
 cd ..
 echo "${TXT_YEL}Building docker image and pushing to acr....${TXT_NC}"
@@ -53,8 +53,6 @@ terraform apply -target azurerm_monitor_autoscale_setting.assessment -target azu
 
 echo -e "${TXT_BLU} You can browse to the webapp via the URL https://cwdevops-appservice.azurewebsites.net/hive ${TXT_NC}"
 echo -e "${TXT_GRN}Terraform deployment has successfully succeeded. ${TXT_NC}"
-
-#echo -e "${TXT_BLU}A terraform destroy is due to prevent the application running and using further free credit.${TXT_NC}"
 
 echo -e ${TXT_BLU}"A terraform destroy is due to prevent the application running and using further free credit. Please type yes followed by enter. Alternatively, please type no followed by enter to keep the infrastructure"${TXT_NC}
 read destroy_response
