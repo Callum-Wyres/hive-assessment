@@ -17,6 +17,7 @@ The Script performs the below actions:
 - Clones the repo holding the source code
 - Prompts for input in regards to whether to install the Azure CLI
     - If the install is required please type install and hit the enter otherwise hit enter to continue with the deployment
+        - Performs a install of the azure cli into /usr/local/opt/azure-cli and configures path to allow the az commands used later in this to run from any location.
 - Performs a login to Azure
 - Initilises Terraform
 - Creates a Resource Group called Assessment
