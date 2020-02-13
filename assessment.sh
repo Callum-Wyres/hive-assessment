@@ -27,7 +27,7 @@ fi
 
 ################ Login to Azure
 
-echo -e "${TXT_YEL} Logging into your Azure subscription ${TXT_NC}}"
+echo -e "${TXT_YEL} Logging into your Azure subscription ${TXT_NC}"
 az login
 
 ################# Initialise terraform
@@ -40,7 +40,7 @@ echo -e "${TXT_YEL}Creating Azure resource group and Azure Container Registry...
 terraform apply -target azurerm_resource_group.devopsassessment -target azurerm_container_registry.acr --auto-approve
 ################ Build docker image
 cd ..
-echo "${TXT_YEL}Building docker image and pushing to acr....${TXT_NC}"
+echo -e "${TXT_YEL}Building docker image and pushing to acr....${TXT_NC}"
 
 az acr build --registry devopsassessment --image devops-assessment .
 
@@ -64,5 +64,3 @@ if [[ $destroy_response = "yes" ]] ; then
 else
   echo -e "${TXT_GRN}Terraform destroy was cancelled by the end user.${TXT_NC}"
 fi
-
-echo -e "${TXT_GRN}Terraform destroy has successfully completed. ${TXT_NC}"
