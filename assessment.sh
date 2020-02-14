@@ -7,14 +7,6 @@ TXT_BLU='\033[0;36m'
 TXT_YEL='\033[1;33m'
 TXT_NC='\033[0m'
 
-################ Clone of Project
-
-echo -e "${TXT_YEL}Clone of terraform deployment project${TXT_NC}"
-
-git clone git@github.com:Callum-Wyres/devops-assessment.git
-
-cd devops-assessment
-
 ###############Install of AZ CLI
 
 echo -e ${TXT_BLU}"Do you have the azure CLI installed on your machine - If not please type yes followed by enter to install the cli onto your machine. If you have the cli installed please press enter to continue."${TXT_NC}
