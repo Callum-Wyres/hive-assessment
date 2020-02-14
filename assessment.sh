@@ -9,13 +9,12 @@ TXT_NC='\033[0m'
 
 ###############Install of AZ CLI
 
-echo -e ${TXT_BLU}"Do you have the azure CLI installed on your machine - If not please type yes followed by enter to install the cli onto your machine. If you have the cli installed please press enter to continue."${TXT_NC}
-read cli_response
-if [[ $cli_response = "install" ]] ; then
-  python setup.py
-else
-  echo -e "${TXT_YEL}Continuing to with assessment criteria${TXT_NC}"
-fi
+echo -e ${TXT_YEL}"Installing homebrew package manager onto your machine followed by azure cli."${TXT_NC}
+
+    echo "Installing homebrew..."
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install azure-cli
+    brew install terraform
 
 ################ Login to Azure
 
