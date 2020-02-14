@@ -11,7 +11,7 @@ TXT_NC='\033[0m'
 
 echo -e ${TXT_YEL}"Installing homebrew package manager onto your machine followed by azure cli."${TXT_NC}
 
-echo -e ${TXT_BLU}"Do you have the azure CLI installed on your machine - If not please type install followed by enter to install the homebrew package manager onto your machine followed by azure cli. If you have the cli installed please press enter to continue."${TXT_NC}
+echo -e ${TXT_BLU}"Do you have the azure CLI installed on your machine - If not please type install followed by enter to install the cli. If you have the cli installed please press enter to continue."${TXT_NC}
 read cli_response
 
 if [[ $cli_response = "install" ]] ; then
