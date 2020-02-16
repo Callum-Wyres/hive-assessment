@@ -4,4 +4,5 @@ resource "azurerm_application_insights" "appinsight" {
   resource_group_name = local.resource_group
   application_type    = "Node.JS"
   tags                = local.tags
+  depends_on          = [azurerm_resource_group.devopsassessment]
 }

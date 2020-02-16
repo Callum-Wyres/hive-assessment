@@ -5,4 +5,5 @@ resource "azurerm_container_registry" "acr" {
   sku                      = "Standard"
   admin_enabled            = true
   tags                     = local.tags
+  depends_on               = [azurerm_resource_group.devopsassessment]
 }

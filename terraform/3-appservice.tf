@@ -34,6 +34,7 @@ resource "azurerm_app_service" "assessment" {
 data "azurerm_app_service_plan" "assessment" {
   name                = "${azurerm_app_service_plan.assessment.name}"
   resource_group_name = local.resource_group
+  depends_on          = [azurerm_app_service_plan.assessment]
 }
 resource "azurerm_monitor_autoscale_setting" "assessment" {
   name                = "myAutoscaleSetting"
