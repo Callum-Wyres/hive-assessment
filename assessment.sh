@@ -42,8 +42,6 @@ az acr build --registry devopsassessment --image devops-assessment .
 ############### Deploy ACR Image to App service
 cd terraform
 echo -e "${TXT_YEL}Creating app service and deploying image....${TXT_NC}"
-#terraform apply -target azurerm_app_service_plan.assessment -target azurerm_app_service.assessment --auto-approve
-#terraform apply -target azurerm_monitor_autoscale_setting.assessment -target azurerm_application_insights.appinsight --auto-approve
 terraform apply --auto-approve
 
 echo -e "${TXT_BLU} You can browse to the webapp via the URL https://cwdevops-appservice.azurewebsites.net/hive ${TXT_NC}"
