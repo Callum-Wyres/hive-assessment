@@ -19,7 +19,7 @@ resource "azurerm_app_service" "assessment" {
   name                = "${local.prefix}appservice"
   location            = local.location
   resource_group_name = local.resource_group
-  app_service_plan_id = "${azurerm_app_service_plan.assessment.id}"
+  app_service_plan_id = azurerm_app_service_plan.assessment.id
   tags                = local.tags
   site_config {
     linux_fx_version  = "DOCKER|devopsassessment.azurecr.io/devops-assessment:latest"
@@ -27,7 +27,7 @@ resource "azurerm_app_service" "assessment" {
     app_settings = {
     "DOCKER_REGISTRY_SERVER_USERNAME" = "devopsassessment"
     "DOCKER_REGISTRY_SERVER_URL" = "https://devopsassessment.azurecr.io"
-    "DOCKER_REGISTRY_SERVER_PASSWORD" = "${data.azurerm_container_registry.acr.admin_password}"
+    "DOCKER_REGISTRY_SERVER_PASSWORD" = data.azurerm_container_registry.acr.admin_password
     "DOCKER_ENABLE_CI" = "true"
   }
 }
@@ -40,7 +40,7 @@ resource "azurerm_monitor_autoscale_setting" "assessment" {
   name                = "myAutoscaleSetting"
   resource_group_name = local.resource_group
   location            = local.location
-  target_resource_id  = "${data.azurerm_app_service_plan.assessment.id}"
+  target_resource_id  = data.azurerm_app_service_plan.assessment.id
   depends_on          = [azurerm_app_service.assessment]
 
   profile {
@@ -55,7 +55,7 @@ resource "azurerm_monitor_autoscale_setting" "assessment" {
     rule {
       metric_trigger {
         metric_name        = "CpuPercentage"
-        metric_resource_id = "${data.azurerm_app_service_plan.assessment.id}"
+        metric_resource_id = data.azurerm_app_service_plan.assessment.id
         time_grain         = "PT1M"
         statistic          = "Average"
         time_window        = "PT5M"
@@ -75,7 +75,7 @@ resource "azurerm_monitor_autoscale_setting" "assessment" {
     rule {
       metric_trigger {
         metric_name        = "CpuPercentage"
-        metric_resource_id = "${data.azurerm_app_service_plan.assessment.id}"
+        metric_resource_id = data.azurerm_app_service_plan.assessment.id
         time_grain         = "PT1M"
         statistic          = "Average"
         time_window        = "PT5M"
